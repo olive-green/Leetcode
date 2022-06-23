@@ -1,3 +1,15 @@
+//logic
+// 1. Sort array
+// 2.Take pq(max heap) to store the durations
+// 3. Iterate over the courses, try to minimize the endtime while maximize the courses
+// 4. return Courses-completed=pq.size()
+
+//for any iteration, check if taking up current course would get completed in the designated time
+// a: if yes, then add new course time  and update currentTime
+// b: if it exceeds the deadline, swap it with the biggest duration from the ones taken up 
+// ** also checks is this swap helpful? the duration we are inserting should not larger than the peek
+
+
 class Solution {
     public int scheduleCourse(int[][] courses) {
         //first we sort the courses according to their ending time
