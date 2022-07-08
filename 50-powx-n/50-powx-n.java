@@ -34,40 +34,43 @@ class Solution {
 //             return xpbn2*xpbn2;
 //         return xpbn2*xpbn2*x;
             
-//         double ans=1;
-//         while(n>0){
-//            if(n%2==0){
-//               =x*xx;
-//                 n=n/2; 
-//            }
-//             else{
-//                 ans=ans*x;
-//                 n=n-1;
-//             }
-           
+        double ans=1;
+        long tempn=n;
+        if(n<0) tempn=-(tempn);
+        while(tempn>0){
+           if(tempn%2==0){
+              x=x*x;
+              tempn=tempn/2; 
+           }
+            else{
+                ans=ans*x;
+                tempn=tempn-1;
+            }
+        }
+        if(n<0)
+            return  1/ans;
+        return ans;
+        
+        
+        
+//         if(n < 0){
+//             n = -n;
+//             x = 1 / x;
 //         }
-//         if(n==0)
-//             return ans;
-//         return ans;
         
-        if(n < 0){
-            n = -n;
-            x = 1 / x;
-        }
+//         double pow = 1;
         
-        double pow = 1;
-        
-        while(n != 0){
-            if((n & 1) != 0){
-                pow *= x;
-            } 
+//         while(n != 0){
+//             if((n & 1) != 0){
+//                 pow *= x;
+//             } 
                 
-            x *= x;
-            n >>>= 1;
+//             x *= x;
+//             n >>>= 1;
             
-        }
+//         }
         
-        return pow;
+//         return pow;
         
         
     }
