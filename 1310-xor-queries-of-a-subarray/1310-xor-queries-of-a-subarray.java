@@ -9,7 +9,7 @@ class Solution {
         for(int i=0;i<queries.length;i++){
             int left=queries[i][0];
             int right=queries[i][1];
-            if(left==0)
+            if(left==0) //this condition because left=0 and 0-1=-1 doesnt valid index
                 ans[i]=prefixXor[right];
             else
             ans[i]=prefixXor[right] ^ prefixXor[left-1];
