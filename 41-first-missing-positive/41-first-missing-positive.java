@@ -13,6 +13,7 @@ class Solution {
                 return i;
             }
         }
+        //the main thing to notice here is ans is within in range 1..n+1;
         return max==nums.length?nums.length+1 :nums.length;
     }
 }
