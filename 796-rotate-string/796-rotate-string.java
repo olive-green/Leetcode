@@ -9,6 +9,27 @@ class Solution {
 //           “cdeab” (B)
 
         
-        return (s+s).contains(goal);
+        // return (s+s).contains(goal);
+        
+        
+        
+        //2nd solution
+        if(s.length() == 0) {
+            return true;
+        }
+        for(int i = 0; i < s.length(); i++) {
+            if(rotateString(s, goal, i)) {
+                return true;
+            }
+        }
+        return false;
+    }
+     private boolean rotateString(String A, String B, int rotation) {
+        for(int i = 0; i < A.length(); i++) {
+            if(A.charAt(i) != B.charAt((i+rotation)%B.length())) {
+                return false;
+            }
+        }
+        return true;
     }
 }
