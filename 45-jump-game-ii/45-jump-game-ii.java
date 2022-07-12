@@ -31,7 +31,7 @@ class Solution {
         return dp[idx]=ans+1;
     }
     public int jump(int[] arr) {
-        int[] dp= new int[arr.length];
+        int[] dp= new int[arr.length+1];
         int ans=solve(arr,0,arr.length-1,dp) ;
         return ans;
     }
