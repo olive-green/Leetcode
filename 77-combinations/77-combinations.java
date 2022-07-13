@@ -1,4 +1,13 @@
 class Solution {
+//     cb - current box
+
+//     tb - total boxes (input n)
+
+//     ssf - selections so far
+
+//     ts - total selections allowed (input k)
+
+//     asf - Sequence so far
     public void combinations(int cb,int n,int ssf,int ts,List<List<Integer>> ans,List<Integer> comb){
         if(cb>n){
             if(ssf==ts){
@@ -10,7 +19,7 @@ class Solution {
         //include a element
         comb.add(cb);
         combinations(cb+1,n,ssf+1,ts,ans,comb);
-        
+    
         //exclude a element
         comb.remove(comb.size()-1);
         combinations(cb+1,n,ssf,ts,ans,comb);
