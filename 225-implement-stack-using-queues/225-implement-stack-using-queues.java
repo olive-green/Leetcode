@@ -1,24 +1,31 @@
 class MyStack {
-    Deque<Integer> dq=new ArrayDeque<Integer>();
+    // Deque<Integer> dq=new ArrayDeque<Integer>();
+    Queue<Integer> q=new LinkedList<Integer>();
     public MyStack() {
         
     }
     
     public void push(int x) {
-        dq.addLast(x);
+        // dq.addLast(x);
+        q.add(x);
+        for(int i=0;i<q.size()-1;i++)
+            q.add(q.remove());
     }
     
     public int pop() {
-        return dq.pollLast();
+        // return dq.pollLast();
+        return q.remove();
     }
     
     public int top() {
-        return dq.peekLast();
+        // return dq.peekLast();
+        return q.peek();
     }
     
     public boolean empty() {
         // System.out.println(dq);
-        return dq.size()==0;
+        // return dq.size()==0;
+        return q.isEmpty();
     }
 }
 
