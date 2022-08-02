@@ -7,13 +7,16 @@ class Solution {
         int count=0,left=0;
         for(Map.Entry<Integer,Integer> mp : map.entrySet()){
             int val=mp.getValue();
-            if(val>1){
-                count+=val/2;
-                map.put(mp.getKey(),val-(val/2*2));
-            }
-            if(map.get(mp.getKey())==1){
-                left++;
-            }
+            // if(val>1){
+            //     count+=val/2;
+            //     map.put(mp.getKey(),val-(val/2*2));
+            // }
+            // if(map.get(mp.getKey())==1){
+            //     left++;
+            // }
+                    // OR
+            count+=val/2;
+            left+=val%2;
                 
         }
         // System.out.println(map);
