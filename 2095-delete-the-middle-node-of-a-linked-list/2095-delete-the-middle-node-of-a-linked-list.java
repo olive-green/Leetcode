@@ -9,22 +9,29 @@
  * }
  */
 class Solution {
-    public ListNode deleteMiddle(ListNode head) {
-        if(head.next==null)
-            return null;
+    public ListNode middle(ListNode head){
         ListNode slow=head;
         ListNode fast=head;
-        //we need a prev pointer which gives us the previous of middle node
-        ListNode prev=head;
-        
         while(fast!=null && fast.next!=null){
-            prev=slow;
-            slow=slow.next;
             fast=fast.next.next;
+            slow=slow.next;
         }
-        //now we have previous node of middle node
-        prev.next=slow.next;
-        slow=null;
-        return head;
+        return slow;
+    }
+    public ListNode deleteMiddle(ListNode head) {
+        ListNode middleNode=middle( head);
+        ListNode dummy=new ListNode(0);
+        dummy.next=head;
+        ListNode prev=dummy;
+        ListNode curr=head;
+        while(curr!=null){
+            if(curr==middleNode){
+                prev.next=curr.next;
+            }
+            else
+                prev=curr;
+            curr=curr.next;
+        }
+        return dummy.next;
     }
 }
