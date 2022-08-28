@@ -14,47 +14,36 @@
  * }
  */
 class Solution {
-//     public void getAns(TreeNode root,List<Integer> level,List<List<Integer>> ans,boolean zigzag){
-//         if(root==null)
-//         {
-//             ans.add(new ArrayList<>(level));
-//             return;
-//         }
-        
-//         for(int i=0;)
-//     }
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
-        List<List<Integer>> ans=new ArrayList<List<Integer>>();
         if(root==null)
-            return ans;
-        boolean zigzag=false;
-        
+            return new ArrayList<List<Integer>>() {{}};
+        //to track from which side we have to print we keeps a flag variable
+        //it is a level order traversal 
         Queue<TreeNode> q=new LinkedList<>();
+        //adding root node
         q.add(root);
-        while(q.size()>0){
+        boolean flag=true;//true reperesent from left to right;
+        List<List<Integer>> ans=new ArrayList<List<Integer>>();
+        while(!q.isEmpty()){
             
             int size=q.size();
-            List<Integer> level=new ArrayList<>();
+            List<Integer> tempAns=new ArrayList<>();
             for(int i=0;i<size;i++){
-                TreeNode top=q.poll();
-                if (zigzag) {
-                    level.add(0, top.val);
-                    
-                }
-                else {
-                    level.add(top.val);
-                }
-                
-                if (top.left != null) {
-                    q.add(top.left);
-                }
-                if (top.right != null) {
-                    q.add(top.right);
-                }
-                
+                TreeNode frontNode=q.poll();
+                if(flag)
+                tempAns.add(frontNode.val);
+                else
+                   tempAns.add(0,frontNode.val); 
+                //now push left and right child of root node
+                if(frontNode.left!=null)
+                    q.add(frontNode.left);
+                if(frontNode.right!=null)
+                    q.add(frontNode.right);
             }
-            ans.add(level);
-            zigzag=!zigzag;
+            //reverse flag direction
+            flag=!flag;
+           ans.add(tempAns);
+            
         }
         return ans;
     }
