@@ -17,25 +17,32 @@ class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
         //iterative approach
         if(root==null)
-            return new  ArrayList<>();
-        Stack<TreeNode> st=new Stack<TreeNode>();
-        List<Integer> ans=new ArrayList<>();
-        TreeNode curr=root;
-        while(curr!=null || st.size()>0){
-            //reach the left most node of curr node
-            while(curr!=null){
-                st.push(curr);
-                curr=curr.left;
+            return new ArrayList<>();
+        
+        Stack<TreeNode> st=new Stack<>();
+       
+        List<Integer> ans=new ArrayList<Integer>();
+        
+// 1) Create an empty stack S.
+// 2) Initialize current node as root
+// 3) Push the current node to S and set current = current->left until current is NULL
+// 4) If current is NULL and stack is not empty then 
+//      a) Pop the top item from stack.
+//      b) Print the popped item, set current = popped_item->right 
+//      c) Go to step 3.
+// 5) If current is NULL and stack is empty then we are done. 
+        while(root!=null || !st.isEmpty()){
+            while(root!=null){
+                st.push(root);
+                root=root.left;
             }
-            //now pop the elements
-            // * Current must be NULL at this point */
-            TreeNode temp=st.pop();
             
-            ans.add(temp.val);
-            // we have visited the node and its
-            //    left subtree.  Now, it's right
-            //    subtree's turn 
-            curr=temp.right;
+            //here curr node is null
+             root=st.pop();
+            ans.add(root.val);
+          // if(top.right!=null)
+            root=root.right;
+            
         }
         return ans;
     }
