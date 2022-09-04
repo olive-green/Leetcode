@@ -9,60 +9,56 @@
  * }
  */
 class Solution {
-    public void insertAtLast(ListNode head,int data){
-        ListNode newNode=new ListNode(data,null);
-        // newNode.next=null;
+    public void insertLast(ListNode head,int data){
+        ListNode newNode=new ListNode(data);
         if(head==null){
             head=newNode;
-            // return head;
-            return;
+            return ;
         }
         ListNode temp=head;
         while(temp.next!=null){
             temp=temp.next;
         }
         temp.next=newNode;
-        // return head;
+        
     }
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode ans=new ListNode(-1);
         int carry=0;
-        // ListNode ans=null;
-        ListNode ans=new ListNode(-1); //we do this so that we do not need to return head from above function
         while(l1!=null && l2!=null){
-            int sum=(l1.val+l2.val+carry);
-            // System.out.println(sum);
-            carry=sum/10;
-            int value=sum%10;
-            // ans=insertAtLast(ans,value); 
-            insertAtLast(ans,value);
+            int value=l1.val+l2.val+carry;  
+            //add node at last
+            insertLast(ans,value%10);
+            
+            carry=value/10;
             l1=l1.next;
             l2=l2.next;
         }
         while(l1!=null){
-            int sum=(l1.val+carry);
-            carry=sum/10;
-            int value=sum%10;
-            // ans=insertAtLast(ans,value);
-            insertAtLast(ans,value);
+            int value=l1.val+carry;  
+            //add node at last
+            insertLast(ans,value%10);
+            
+            carry=value/10;
             l1=l1.next;
         }
         while(l2!=null){
-            int sum=(l2.val+carry);
-            carry=sum/10;
-            int value=sum%10;
-            // ans=insertAtLast(ans,value); 
-            insertAtLast(ans,value);
+            int value=l2.val+carry;  
+            //add node at last
+            insertLast(ans,value%10);
+            
+            carry=value/10;
             l2=l2.next;
         }
-        //if both lists are same then its carry should be added to result list
-            while(carry!=0){
-                int sum=carry;
-                int digit=sum%10;
-                carry=sum/10;
-                // ans=insertAtLast(ans,digit);
-                insertAtLast(ans,digit);
-            }
-        // return ans;
+        while(carry!=0){
+            int value=carry;  
+            //add node at last
+            insertLast(ans,value%10);
+            
+            carry=value/10;
+            // l2=l2.next;
+        }
+        // System.out.println(ans.val);
         return ans.next;
     }
 }
