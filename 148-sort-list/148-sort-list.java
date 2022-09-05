@@ -21,10 +21,10 @@ class Solution {
         return slow;
     }
     public ListNode merge(ListNode left,ListNode right){
-        if(left==null)
-            return right;
-        if(right==null)
-            return left;
+        // if(left==null)
+        //     return right;
+        // if(right==null)
+        //     return left;
         ListNode ans=new ListNode(0);
         // ans.next=hea
         ListNode prev=ans;
