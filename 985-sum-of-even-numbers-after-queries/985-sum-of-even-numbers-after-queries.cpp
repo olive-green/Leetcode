@@ -25,16 +25,16 @@ public:
         }
         for(int i=0;i<q.size();i++){
             int idx=q[i][1];
-            int prev=arr[idx];
+            if(arr[idx]%2==0 ){
+                orgSum-=arr[idx];
+            }
+            
             arr[idx]+=q[i][0];
             
-            if(arr[idx]%2==0 && prev%2==0 ){
-                orgSum+=arr[idx]-prev;
+            if(arr[idx]%2==0 ){
+               orgSum+=arr[idx];
             }
-            else if(arr[idx]%2==0)
-                orgSum+=arr[idx];
-            else if(prev%2==0)
-                orgSum-=prev;
+           
         
           ans.push_back(orgSum);
         }
