@@ -43,23 +43,25 @@ class Solution {
       
         if(head.next==null)
             return head=null;
-        //first we move A pointer to k then move both A and B till A!=null after that B is at kth position
+//         //first we move A pointer to k then move both A and B till A!=null after that B is at k-1th position
         ListNode fakeHead=new ListNode(-1);
+        fakeHead.next=head;
         ListNode a=fakeHead;
         ListNode b=fakeHead;
-        fakeHead.next=head;
+        
         
         for(int i=0;i<=n;i++){
             a=a.next;
         }
         
-        while(a!=null){
+        while(a!=null ){
             a=a.next;
             b=b.next;
         }
         //now b points to one previous of kth node
         b.next=b.next.next;
         return fakeHead.next;
+      
         
     }
 }
