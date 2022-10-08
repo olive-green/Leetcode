@@ -26,9 +26,8 @@ class Solution {
         int leftHt=helper(root.left);
         int rightHt=helper(root.right);
         
-        boolean left=isBalanced(root.left);
-        boolean right=isBalanced(root.right);
+        if(Math.abs(leftHt-rightHt)>1) return false ;
         
-        return (Math.abs(leftHt-rightHt)>1? false : true) && (left && right);
+        return isBalanced(root.left) && isBalanced(root.right);
     }
 }
