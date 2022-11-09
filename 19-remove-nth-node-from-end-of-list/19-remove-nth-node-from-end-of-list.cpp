@@ -11,12 +11,8 @@
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
-        if(head==NULL || head->next==NULL)
-        {
-            if(head->next==NULL && n==1)
-                return NULL;
-            
-        }
+        
+        // The reason why we are using this extra dummy node is that there is an edge case. If the node is equal to the length of the LinkedList, then this slow will point to slow’s next→ next. And we can say our dummy start node will be broken and will be connected to the slow next→ next.
         ListNode* ans=new ListNode(-1);
         ans->next=head;
         ListNode* temp=ans;
