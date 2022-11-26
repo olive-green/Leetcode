@@ -15,14 +15,15 @@ public:
         if(root==NULL)
             return false;
         sum+=root->val;
+        temp.push_back(root->val);
         if(root->left==NULL && root->right==NULL && sum==t)
         {
-            temp.push_back(root->val);
+            
             ans.push_back(temp);
             return true;
         }
         
-        temp.push_back(root->val);
+       
         
         bool left=helper(root->left,t,ans,temp,sum);
         bool right=helper(root->right,t,ans,temp,sum);
