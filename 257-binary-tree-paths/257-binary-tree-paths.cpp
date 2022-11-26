@@ -19,7 +19,7 @@ public:
         {
             temp+=to_string(root->val);
             ans.push_back(temp);
-            temp="";
+            // temp="";
             return true;
         }
         temp+=to_string(root->val)+"->";
@@ -28,8 +28,7 @@ public:
         bool right=helper(root->right,ans,temp);
         if(left==true || right==true)
             return true;
-        //remove the last added element
-        // temp.erase(temp.begin()+temp.size());
+       
         return false;
     }
     vector<string> binaryTreePaths(TreeNode* root) {
