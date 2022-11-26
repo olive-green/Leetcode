@@ -29,12 +29,12 @@ public:
         if(left==true || right==true)
             return true;
         //remove the last added element
-        temp.erase(temp.begin()+temp.size());
+        // temp.erase(temp.begin()+temp.size());
         return false;
     }
     vector<string> binaryTreePaths(TreeNode* root) {
         vector<string> ans;
-        // string temp="";
+        
         helper(root,ans,"");
         return ans;
     }
